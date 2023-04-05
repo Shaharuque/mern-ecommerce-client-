@@ -9,6 +9,7 @@ import Register from "./pages/Auth/Register";
 function App() {
   return (
     <div>
+      {/* Test */}
       <Routes>
         <Route path="/" element={<HomePage></HomePage>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
