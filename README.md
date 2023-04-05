@@ -1,3 +1,15 @@
+# Used tech stack
+
+1. Ant Design
+2. React Router Dom 6.4
+3. Tailwind css
+
+# Important Notes
+
+- Whatever image in public folder we can use them directly
+- SEO can be performed in meta tag
+  npm i react-helmet(for creating reuseable meta tag)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
