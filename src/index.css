@@ -104,7 +104,7 @@ code {
   border: 1px solid #ccc;
 }
 
-button[type="submit"] {
+.register-button {
   display: block;
   margin-top: 10px;
   padding: 10px;
@@ -114,6 +114,25 @@ button[type="submit"] {
   background-color: teal;
   color: #fff;
   cursor: pointer;
+}
+
+/* For Login Page */
+.login {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login h2 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+/* Login background */
+.bg-my-background-image {
+  background-image: url('/public/Images/cover1.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
 }
 
 /* ================= */

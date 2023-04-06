@@ -3,6 +3,7 @@
 1. Ant Design
 2. React Router Dom 6.4
 3. Tailwind css
+4. hot toast
 
 # Important Notes
 
