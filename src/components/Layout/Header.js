@@ -13,7 +13,6 @@ const Header = () => {
       token:""
     })
     localStorage.removeItem("auth")
-    // navigate('/login')
   }
   return (
     <div>
@@ -76,7 +75,7 @@ const Header = () => {
               <div className="hidden sm:block sm:ml-6">
                 <div className="flex space-x-4 text-white">
                   <NavLink to="/" activeClassName="active ">
-                    Dashboard
+                    Home
                   </NavLink>
                   <NavLink to="/about" activeClassName="active">
                     Category
