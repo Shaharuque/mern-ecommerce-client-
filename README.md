@@ -4,6 +4,7 @@
 2. React Router Dom 6.4
 3. Tailwind css
 4. hot toast
+5.context api (https://www.loginradius.com/blog/engineering/react-context-api/)
 
 # Important Notes
 

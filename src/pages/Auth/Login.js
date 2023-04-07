@@ -4,11 +4,14 @@ import { CloseSquareFilled } from "@ant-design/icons";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/authContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  //context api
+  const [auth,setAuth]=useAuth()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,6 +26,12 @@ const Login = () => {
       );
       if (res && res.data.success) {
         toast.success(res.data && res.data.message);
+        setAuth({
+          ...auth,
+          user:res?.data?.user,
+          token:res?.data?.token
+        })
+        localStorage.setItem('auth',JSON.stringify(res?.data))
         navigate("/");
       } else {
         toast.error(res.data.message);
