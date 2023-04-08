@@ -30,7 +30,7 @@ const Register = () => {
     };
     try {
       const res = await axios.post(
-        "http://localhost:8080/api/v1/auth/register",
+        `${process.env.REACT_APP_API_URL}/auth/register`,
         payload
       );
       if (res && res.data.success) {

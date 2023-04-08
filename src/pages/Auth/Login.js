@@ -6,12 +6,13 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 
-const Login = () => {
+const Login = ({ from }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
   //context api
-  const [auth,setAuth]=useAuth()
+  const [auth, setAuth] = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,18 +22,24 @@ const Login = () => {
     };
     try {
       const res = await axios.post(
-        "http://localhost:8080/api/v1/auth/login",
+        `${process.env.REACT_APP_API_URL}/auth/login`,
         payload
       );
       if (res && res.data.success) {
         toast.success(res.data && res.data.message);
         setAuth({
           ...auth,
-          user:res?.data?.user,
-          token:res?.data?.token
-        })
-        localStorage.setItem('auth',JSON.stringify(res?.data))
-        navigate("/");
+          user: res?.data?.user,
+          token: res?.data?.token,
+        });
+        localStorage.setItem("auth", JSON.stringify(res?.data));
+        if (from !== null) {
+          console.log("loging from navigation to", from?.from?.pathname);
+          navigate(`${from?.from?.pathname}`);
+        } else {
+          console.log("login from navigation to default");
+          navigate("/"); //admin panel a redirect
+        }
       } else {
         toast.error(res.data.message);
       }

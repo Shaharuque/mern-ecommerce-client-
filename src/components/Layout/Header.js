@@ -3,17 +3,17 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 
 const Header = () => {
-  const [auth,setAuth]=useAuth()
-  const navigate=useNavigate()
+  const [auth, setAuth] = useAuth();
+  const navigate = useNavigate();
 
-  const handleLogout=()=>{
+  const handleLogout = () => {
     setAuth({
       ...auth,
-      user:null,
-      token:""
-    })
-    localStorage.removeItem("auth")
-  }
+      user: null,
+      token: "",
+    });
+    localStorage.removeItem("auth");
+  };
   return (
     <div>
       <nav className="bg-gray-800 shadow-gray-700 shadow-md">
@@ -86,21 +86,35 @@ const Header = () => {
                   <NavLink to="/contact" activeClassName=" active">
                     Contact
                   </NavLink>
-                  {
-                    auth?.user ?
-                        <NavLink onClick={handleLogout} to="/login" activeClassName="active ">
-                          Logout
-                        </NavLink>
-                      :
-                        <>
-                          <NavLink to="/register" activeClassName="active ">
-                            Register
-                          </NavLink>
-                          <NavLink to="/login" activeClassName=" active ">
-                            Login
-                          </NavLink>
-                        </>
-                  }
+
+                  {auth?.user && (
+                    <>
+                      <NavLink to="/user/dashboard" activeClassName="active">
+                        Dashboard
+                      </NavLink>
+                      <NavLink to="/user/profile" activeClassName="active">
+                        Profile
+                      </NavLink>
+                    </>
+                  )}
+                  {auth?.user ? (
+                    <NavLink
+                      onClick={handleLogout}
+                      to="/login"
+                      activeClassName="active "
+                    >
+                      Logout
+                    </NavLink>
+                  ) : (
+                    <>
+                      <NavLink to="/register" activeClassName="active ">
+                        Register
+                      </NavLink>
+                      <NavLink to="/login" activeClassName=" active ">
+                        Login
+                      </NavLink>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
